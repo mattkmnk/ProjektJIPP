@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PostHub.Areas.Identity.Data;
+@inject SignInManager<PostHubUser> SignInManager
+@inject UserManager<PostHubUser> UserManager
+
+@model IEnumerable<PostHub.Models.PostModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a asp-action="CreatePost">Create New</a>
+    }
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <a asp-action="PostView" asp-route-id="@item.ID">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            @if (item.Author == User.Identity.Name)
+            {
+                <td>
+                    <a asp-action="EditPost" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="RemovePost" asp-route-id="@item.ID">Delete</a>
+                </td>
+            }
+        </tr>
+         }
+        </tbody>
+</table>
