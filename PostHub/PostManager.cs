@@ -27,7 +27,7 @@ namespace PostHub
         {
             using (var context = new PostContext())
             {
-                return context.Posts.SingleOrDefault(x => x.ID == id);
+                return context.Posts.Single(x => x.ID == id);
             }
         }
 

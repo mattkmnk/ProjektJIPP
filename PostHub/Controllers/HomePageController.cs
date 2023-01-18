@@ -38,7 +38,7 @@ namespace PostHub.Controllers
         public IActionResult RemovePost(int id)
         {
             var post = postManager.GetPost(id);
-            return View(post);
+            return View();
         }
 
         [HttpPost]

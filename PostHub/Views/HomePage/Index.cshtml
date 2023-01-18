@@ -6,62 +6,33 @@
 @model IEnumerable<PostHub.Models.PostModel>
 
 @{
+    Layout = "~/Views/Shared/_LayoutWithItems.cshtml";
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    @if (SignInManager.IsSignedIn(User))
+<div class="posts-board">
+    @foreach (var item in Model)
     {
-        <a asp-action="CreatePost">Create New</a>
-    }
-
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublishDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Content)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
+    <div class="card border-dark w-100 my-3 bg-light">
+        <div class="row h-50 mx-2 my-2">
+            <div class="col-sm post-info w-75">
                 <a asp-action="PostView" asp-route-id="@item.ID">
                     @Html.DisplayFor(modelItem => item.Title)
                 </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            @if (item.Author == User.Identity.Name)
-            {
-                <td>
-                    <a asp-action="EditPost" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="RemovePost" asp-route-id="@item.ID">Delete</a>
-                </td>
-            }
-        </tr>
-         }
-        </tbody>
-</table>
+                <div style="font-size: 14px;">@@@Html.DisplayFor(modelItem => item.Author)</div>
+            <div class="date">@Html.DisplayFor(modelItem => item.PublishDate)</div>
+            </div>
+            <div class="col-sm text-right w-25">
+                    @if (item.Author == User.Identity.Name)
+                    {
+                        <a class="btn btn-dark" asp-action="EditPost" asp-route-id="@item.ID">Edit</a>
+                        <a class="btn btn-danger" asp-action="RemovePost" asp-route-id="@item.ID">Delete</a>
+                    }
+            </div>
+        </div>
+        <div class="card-body text-dark">
+            @Html.DisplayFor(modelItem => item.Content)
+        </div>
+    </div>
+    }
+</div>

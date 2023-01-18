@@ -23,10 +23,10 @@ namespace PostHub.Controllers
         }
 
         [HttpGet]
-        public IActionResult DisplayPost(PostModel post)
+        public IActionResult DisplayPost(int id)
         {
-            var postId = post.ID;
-            ViewBag.Comments = commentManager.GetAllCommentsForPost(postId);
+            ViewBag.Comments = commentManager.GetAllCommentsForPost(id);
+            var post = postManager.GetPost(id);
             return View(post);
         }
 
@@ -41,7 +41,35 @@ namespace PostHub.Controllers
         public IActionResult CreateComment(CommentModel comment)
         {
             commentManager.PublishPost(comment);
-            return RedirectToAction($"DisplayPost");
+            return RedirectToAction("DisplayPost", new { id = comment.PostModelId });
+        }
+
+        [HttpGet]
+        public IActionResult RemovePost(int id)
+        {
+            var post = postManager.GetPost(id);
+            return View(post);
+        }
+
+        [HttpPost]
+        public IActionResult RemovePostConfirmation(int id)
+        {
+            postManager.RemovePost(id);
+            return RedirectToAction("Index", "HomePage");
+        }
+
+        [HttpGet]
+        public IActionResult EditPost(int id)
+        {
+            var post = postManager.GetPost(id);
+            return View(post);
+        }
+
+        [HttpPost]
+        public IActionResult EditPost(PostModel post)
+        {
+            postManager.EditPost(post);
+            return RedirectToAction("DisplayPost", new { id = post.ID });
         }
     }
 }
