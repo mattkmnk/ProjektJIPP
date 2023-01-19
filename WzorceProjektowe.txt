@@ -43,5 +43,5 @@ Metoda Wytwórcza - Wzorzec kreacyjny w którym kontrolę nad tworzeniem obiektu
 
 Dekorator - Wzorzec strukturalny polegający na opakowaniu oryginalnej klasy w klasę dekoratora a pozwalający na przyłączanie nowych funkcjonalności
     do obiektów dzięki pośredniej klasie dekoratora. Stosowany do rozszerzania funkcjonalności klas dzięki interfejsom i klasom abstrakcyjnym bez konieczności modyfikowania kodu używanego przez klienta.
-    Dodatkowo w przeciwieństwie do dziedziczenia jesteśmy w stanie stworzyć obiekt dekoratora w trakcie wykonywania programu i wprowadzić dynamicznie rozszerzenie klasy.
+    Dodatkowo w przeciwieństwie do dziedziczenia jesteśmy w stanie stworzyć obiekt dekoratora w trakcie wykonywania programu i wprowadzić dynamicznie rozszerzenie         klasy.
     W .NET core używany przy np. rozszerzaniu działania kontrolek w interfejsie graficznym 
