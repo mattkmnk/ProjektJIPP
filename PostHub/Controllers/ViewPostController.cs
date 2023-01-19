@@ -10,11 +10,12 @@ namespace PostHub.Controllers
     public class ViewPostController : Controller
     {
         private IPostManager postManager;
-        public CommentManager commentManager = new CommentManager();
+        private ICommentManager commentManager;
 
-        public ViewPostController(IPostManager manager)
+        public ViewPostController(ICommentManager cmanager, IPostManager pmanager)
         {
-            postManager = manager;
+            commentManager = cmanager;
+            postManager = pmanager;
         }
 
         public IActionResult Index()

@@ -11,6 +11,7 @@ using PostHub.Controllers;
 using PostHub.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,7 +34,9 @@ namespace PostHub
                     Configuration.GetConnectionString("PostHubContextConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddSingleton<IPostManager, PostManager>();
+            services.AddScoped<IPostManager, PostManager>();
+            services.AddScoped<ICommentManager, CommentManager>();
+            //services.AddSingleton<IPostManager, PostManager>();
 
             services.AddControllersWithViews();
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PostHub
 {
-    public class CommentManager
+    public class CommentManager : ICommentManager
     {
         public CommentManager PublishPost(CommentModel comment)
         {
