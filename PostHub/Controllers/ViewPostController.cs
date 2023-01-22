@@ -9,8 +9,8 @@ namespace PostHub.Controllers
 {
     public class ViewPostController : Controller
     {
-        private IPostManager postManager;
-        private ICommentManager commentManager;
+        private readonly IPostManager postManager;
+        private readonly ICommentManager commentManager;
 
         public ViewPostController(ICommentManager cmanager, IPostManager pmanager)
         {

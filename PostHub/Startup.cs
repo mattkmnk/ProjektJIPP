@@ -34,9 +34,9 @@ namespace PostHub
                     Configuration.GetConnectionString("PostHubContextConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddScoped<IPostManager, PostManager>();
-            services.AddScoped<ICommentManager, CommentManager>();
-            //services.AddSingleton<IPostManager, PostManager>();
+            services.AddSingleton<IPostManager, PostManager>();
+            services.AddSingleton<ICommentManager, CommentManager>();
+            //services.AddSingleton<IPostManager, PostManager();
 
             services.AddControllersWithViews();
         }

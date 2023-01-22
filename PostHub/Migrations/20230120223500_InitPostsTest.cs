@@ -2,7 +2,7 @@
 
 namespace PostHub.Migrations
 {
-    public partial class CreateIdentitySchemaMSSQL : Migration
+    public partial class InitPostsTest : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

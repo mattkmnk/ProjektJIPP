@@ -9,7 +9,7 @@ namespace PostHub.Controllers
 {
     public class HomePageController : Controller
     {
-        private IPostManager postManager;
+        private readonly IPostManager postManager;
 
         public HomePageController(IPostManager manager)
         {
