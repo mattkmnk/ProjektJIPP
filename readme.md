@@ -16,7 +16,7 @@ Kompozyt - Wzorzec polegający na komponowaniu obiektów w drzewa, gdzie użytko
                        +-> Linia.Draw() +-> Punkt.Draw();
                                         +-> Punkt.Draw();
 
-        Z trójkątów możemy tworzyć dalsze obiekty graficzne, wymagane jest tylko zaimplementowanie tego samego interfejsu (Draw())
+    Z trójkątów możemy tworzyć dalsze obiekty graficzne, wymagane jest tylko zaimplementowanie tego samego interfejsu (Draw())
 
     Stosowany w wypadku gdy potrzebujemy traktować wiele elementów w ten sam sposób, a dodatkowo możemy je łączyć w większe paczki. 
     W .NET np. przy kontrolkach w interfejsie graficznym.
